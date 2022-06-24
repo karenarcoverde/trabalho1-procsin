@@ -29,7 +29,7 @@ pot_voz = sum(voz.^2)/length(voz);
 pot_musica = sum(musica.^2)/length(musica);
 
 % SNR = 10*log(pot_sinal/pot_ruido):
-SNR = 0; 
+SNR = 10; 
 pot_ruido_voz = pot_voz/10^(SNR/10);
 pot_ruido_musica = pot_musica/10^(SNR/10);
 
@@ -37,14 +37,14 @@ pot_ruido_musica = pot_musica/10^(SNR/10);
 desvio_voz = pot_ruido_voz^(1/2);
 desvio_musica = pot_ruido_musica^(1/2);
 
-% Colocando ruído branco nos sinais
+% Colocando ruido branco nos sinais
 contaminado_voz = voz + desvio_voz.*randn(length(voz),1);
 contaminado_musica = musica + desvio_musica.*randn(length(musica),1);
 
 t_contaminado_voz = (1:length(contaminado_voz))/FS;
 t_contaminado_musica = (1:length(contaminado_musica))/FS;
 
-% Gráfico dos sinais no tempo
+% Graficos dos sinais no tempo
 figure('units', 'centimeters', 'position', [3, 3, 20, 13])
 nexttile
 plot(t_contaminado_voz, contaminado_voz/max(abs(contaminado_voz)))
