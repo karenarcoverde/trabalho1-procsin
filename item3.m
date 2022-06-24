@@ -39,7 +39,7 @@ desvio_musica = pot_ruido_musica^(1/2);
 
 % Colocando ruído branco nos sinais
 contaminado_voz = voz + desvio_voz.*randn(length(voz),1);
-contaminado_musica = uranus + desvio_musica.*randn(length(musica),1);
+contaminado_musica = musica + desvio_musica.*randn(length(musica),1);
 
 t_contaminado_voz = (1:length(contaminado_voz))/FS;
 t_contaminado_musica = (1:length(contaminado_musica))/FS;
