@@ -14,9 +14,10 @@ clear Fs
 voz = voz(:,1);
 musica = musica(:,1);
 
+% frequencia de amostragem FS
 FS = 16000;
 
-% --- Alterando a freq de amostragem para FS:
+% Alterando a freq de amostragem para FS usando o resample
 if FS_musica ~= FS
    musica = resample(musica, FS, FS_musica);
 end
@@ -37,7 +38,7 @@ pot_ruido_musica = pot_musica/10^(SNR/10);
 desvio_voz = pot_ruido_voz^(1/2);
 desvio_musica = pot_ruido_musica^(1/2);
 
-% Colocando ruido branco nos sinais
+% Colocando ruido branco nos sinais com randn 
 contaminado_voz = voz + desvio_voz.*randn(length(voz),1);
 contaminado_musica = musica + desvio_musica.*randn(length(musica),1);
 
@@ -56,7 +57,7 @@ title('contaminado musica.wav')
 xlim([0 inf])
 xlabel('tempo [s] \rightarrow')
 
-% Espectogramas
+% Espectrogramas
 N = 512;
 window = hamming(N);
 Noverlap = N/2;
