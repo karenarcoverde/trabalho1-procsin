@@ -11,9 +11,10 @@ samples = [1,5*Fs];
 clear Fs
 [voz,FS_voz] = audioread('voz.wav',samples);
 
-FS = 8000;
+% frequencia de amostragem FS
+FS = 8000; 
 
-% --- Alterando a freq de amostragem para FS:
+% Alterando a freq de amostragem para FS usando o resample
 if FS_musica ~= FS
    musica = resample(musica, FS, FS_musica);
 end
@@ -40,4 +41,3 @@ title('voz.wav')
 xlim([0 inf])
 
 xlabel('tempo [s] \rightarrow')
-
