@@ -14,9 +14,10 @@ clear Fs
 voz = voz(:,1);
 musica = musica(:,1);
 
+% frequencia de amostragem FS
 FS = 16000;
 
-% --- Alterando a freq de amostragem para FS:
+% Alterando a freq de amostragem para FS usando o resample
 if FS_musica ~= FS
    musica = resample(musica, FS, FS_musica);
 end
